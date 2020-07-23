@@ -31,3 +31,12 @@ target_include_directories(roborts_base_node PUBLIC
   ${catkin_INCLUDE_DIRS})
 add_dependencies(roborts_base_node roborts_msgs_generate_messages)
 
+install(TARGETS roborts_base_node
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
+
+install(DIRECTORY config
+            DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)

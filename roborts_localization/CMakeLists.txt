@@ -41,3 +41,18 @@ target_link_libraries(localization_node
 
 target_include_directories(localization_node PUBLIC
         ${catkin_INCLUDE_DIRS})
+
+
+ install(TARGETS localization_node
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
+
+ install(DIRECTORY config
+            DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+    )
+
+ install(DIRECTORY amcl
+            DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+    )

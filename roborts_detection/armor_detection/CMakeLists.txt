@@ -54,3 +54,13 @@ target_link_libraries(armor_detection_client
 )
 add_dependencies(armor_detection_client
   roborts_msgs_generate_messages)
+
+install(TARGETS ${PROJECT_NAME}_client ${PROJECT_NAME}_node armor_detection_client
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
+
+ install(DIRECTORY config
+            DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${PROJECT_NAME}
+    )
