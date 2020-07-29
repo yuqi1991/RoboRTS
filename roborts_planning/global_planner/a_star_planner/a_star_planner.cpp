@@ -183,7 +183,9 @@ ErrorInfo AStarPlanner::SearchPath(const int &start_index,
         parent_.at(neighbor_index) = current_index;
 
         if (state_.at(neighbor_index) == SearchState::NOT_HANDLED) {
-          GetManhattanDistance(neighbor_index, goal_index, h_score);
+//          GetManhattanDistance(neighbor_index, goal_index, h_score);
+          GetEucDistance(neighbor_index,goal_index, h_score);
+//          ROS_DEBUG("g_score %d  h_score %d, cur_pos:%d - %d, nei_pos:%d - %d, move cost:%d, nei_cost:%d ",g_score_.at(neighbor_index), h_score, start_x,start_y, nei_x,nei_y, move_cost, cost_[neighbor_index]);
           f_score_.at(neighbor_index) = g_score_.at(neighbor_index) + h_score;
           openlist.push(neighbor_index);
           state_.at(neighbor_index) = SearchState::OPEN;
@@ -243,6 +245,11 @@ ErrorInfo AStarPlanner::GetMoveCost(const int &current_index,
 void AStarPlanner::GetManhattanDistance(const int &index1, const int &index2, int &manhattan_distance) const {
   manhattan_distance = heuristic_factor_* 10 * (abs(index1 / gridmap_width_ - index2 / gridmap_width_) +
       abs(index1 % gridmap_width_ - index2 % gridmap_width_));
+}
+
+void AStarPlanner::GetEucDistance(const int &index1, const int &index2, int &euclidiean_distance) const {
+  euclidiean_distance = static_cast<int>(heuristic_factor_ * sqrt(pow(int(index1 / gridmap_width_) - int(index2 / gridmap_width_) ,2) +
+	  pow(int(index1 % gridmap_width_) - int(index2 % gridmap_width_), 2)));
 }
 
 void AStarPlanner::GetNineNeighbors(const int &current_index, std::vector<int> &neighbors_index) const {

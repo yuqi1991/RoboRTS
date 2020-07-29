@@ -33,7 +33,37 @@ point {
 
   roll:  0
   pitch: 0
-  yaw:   0.3774188
+  yaw:   0.3137579
+}
+
+point {
+  x: 11.7121
+  y: 10.6997
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw: 0.3137579
+}
+
+point {
+  x: 14.570553
+  y: 11.618210
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw: 0.3137579
+}
+
+point {
+  x: 16.010
+  y: 12.1746
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw: 0.3137579
 }
 
 point {
@@ -43,18 +73,18 @@ point {
 
   roll:  0
   pitch: 0
-  yaw:   0.3774188
+  yaw: 0.3137579
 }
 
 
 point {
-  x: 19.079
-  y: 14.902
+  x: 18.6382
+  y: 14.5896
   z: 0
 
   roll:  0
   pitch: 0
-  yaw:   1.0132141
+  yaw: 1.9615659
 }
 
 point {
@@ -64,9 +94,18 @@ point {
 
   roll:  0
   pitch: 0
-  yaw:   1.9003096
+  yaw:1.9003096
 }
 
+point {
+  x: 17.365
+  y: 20.060
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw: -2.764726
+}
 
 point {
   x: 15.684
@@ -75,7 +114,17 @@ point {
 
   roll:  0
   pitch: 0
-  yaw:   1.9249251
+  yaw:   -2.764726
+}
+
+point {
+  x: 15.684
+  y: 20.5521
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw: -1.3145651
 }
 
 point {
@@ -85,17 +134,37 @@ point {
 
   roll:  0
   pitch: 0
-  yaw:   -1.290157
+  yaw: -1.290157
 }
 
 point {
-  x: 16.1271
-  y: 12.0784
+  x: 17.9888
+  y: 12.8144
   z: 0
 
   roll:  0
   pitch: 0
-  yaw:   -2.7457327
+  yaw: -1.290157
+}
+
+point {
+  x: 17.9888
+  y: 12.8144
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw: -2.8001016
+}
+
+point {
+  x: 13.369888
+  y: 11.20
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw: -2.8001016
 }
 
 point {
@@ -105,8 +174,9 @@ point {
 
   roll:  0
   pitch: 0
-  yaw:   -2.79537
+  yaw: -2.79537
 }
+
 escape {
   left_x_limit: 2.5
   right_x_limit: 5.5

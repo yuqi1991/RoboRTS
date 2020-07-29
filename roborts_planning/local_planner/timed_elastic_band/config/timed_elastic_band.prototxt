@@ -7,7 +7,7 @@ trajectory_opt {
     teb_autosize: True
     dt_ref: 0.15
     dt_hysteresis: 0.01
-    global_plan_overwrite_orientation: true 
+    global_plan_overwrite_orientation: true
     allow_init_with_backwards_motion: false 
     global_plan_viapoint_sep: 1.5
     via_points_ordered: False
@@ -21,20 +21,20 @@ trajectory_opt {
 }
 
 kinematics_opt {
-    max_vel_x: 0.5
+    max_vel_x: 1.0
     max_vel_x_backwards: 0.5
-    max_vel_y: 0.5
-    max_vel_theta: 1.0
-    acc_lim_x: 1.0
-    acc_lim_y: 1.0
-    acc_lim_theta: 1.0
+    max_vel_y: 1.0
+    max_vel_theta: 3.14
+    acc_lim_x: 2.6
+    acc_lim_y: 2.6
+    acc_lim_theta: 2.6
     min_turning_radius: 0
     wheelbase: 0
     cmd_angle_instead_rotvel: false
 }
 
 tolerance_opt {
-    xy_goal_tolerance: 0.2
+    xy_goal_tolerance: 0.1
     yaw_goal_tolerance: 0.1
     free_goal_vel: False
 }

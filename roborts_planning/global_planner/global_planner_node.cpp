@@ -249,7 +249,7 @@ void GlobalPlannerNode::PlanThread() {
 
       //Plan
       error_info = global_planner_ptr_->Plan(current_start, current_goal, current_path);
-	  ROS_ERROR("Current Pose: %f %f  Goal %f %f",current_start.pose.position.x,current_start.pose.position.y,current_goal.pose.position.x,current_goal.pose.position.y);
+	  ROS_DEBUG("Current Pose: %f %f  Goal %f %f",current_start.pose.position.x,current_start.pose.position.y,current_goal.pose.position.x,current_goal.pose.position.y);
 
     }
 
