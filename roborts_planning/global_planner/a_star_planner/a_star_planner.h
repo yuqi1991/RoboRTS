@@ -91,6 +91,10 @@ class AStarPlanner : public GlobalPlannerBase {
   void GetManhattanDistance(const int &index1,
                             const int &index2,
                             int &manhattan_distance) const;
+
+  void GetEucDistance(const int &index1,
+							const int &index2,
+							int &euclidiean_distance) const;
   /**
    * @brief Get the index of nine neighbor cell from the current cell
    * @param current_index Index of the current cell as input
