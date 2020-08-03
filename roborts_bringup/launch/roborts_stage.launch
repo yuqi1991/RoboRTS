@@ -17,6 +17,7 @@
   </node>
 
   <!-- Run the localization node -->
+  <node pkg="roborts_localization" type="uwb_node" name="uwb_node" respawn="false" output="screen"/>
   <node pkg="roborts_localization" type="localization_node" name="localization_node" respawn="false" />
 
   <!-- Run the global planner Node -->

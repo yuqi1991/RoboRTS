@@ -14,8 +14,9 @@ initial_cov_xx : 0.1
 initial_cov_yy : 0.1
 initial_cov_aa : 0.1
 
-enable_uwb : false
+enable_uwb : true
+uwb_device_tag: "/dev/ttyACM1"
 uwb_frame_id : "uwb"
 uwb_topic_name : "uwb"
 use_sim_uwb : false
-uwb_correction_frequency : 20
+uwb_correction_frequency : 1

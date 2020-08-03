@@ -43,11 +43,37 @@ target_include_directories(localization_node PUBLIC
         ${catkin_INCLUDE_DIRS})
 
 
+add_executable(
+        uwb_node
+        uwb_node.cpp
+        uwb_publisher.cpp
+)
+
+target_link_libraries(uwb_node
+        PUBLIC
+        roborts_base
+        ${catkin_LIBRARIES}
+        ${GLOG_LIBRARY}
+        )
+
+target_include_directories(uwb_node PUBLIC
+        ../roborts_base/roborts_sdk/hardware
+        ${catkin_INCLUDE_DIRS}
+        )
+
+
+
  install(TARGETS localization_node
    ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
    LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
    RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
+
+install(TARGETS uwb_node
+        ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        )
 
  install(DIRECTORY config
             DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}

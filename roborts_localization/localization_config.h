@@ -39,6 +39,7 @@ struct LocalizationConfig {
       nh->param<double>("initial_cov_yy", initial_cov_yy, 0.1);
       nh->param<double>("initial_cov_aa", initial_cov_aa, 0.1);
       nh->param<bool>("enable_uwb", enable_uwb, false);
+	  nh->param<std::string>("uwb_device_tag", uwb_device_tag, "/dev/ttyACM0");
       nh->param<std::string>("uwb_frame_id", uwb_frame_id, "uwb");
       nh->param<std::string>("uwb_topic_name", uwb_topic_name, "uwb");
       nh->param<bool>("use_sim_uwb", use_sim_uwb, false);
@@ -65,6 +66,7 @@ struct LocalizationConfig {
   bool publish_visualize;
 
   bool enable_uwb;
+  std::string uwb_device_tag;
   std::string uwb_frame_id;
   std::string uwb_topic_name;
   bool use_sim_uwb;
