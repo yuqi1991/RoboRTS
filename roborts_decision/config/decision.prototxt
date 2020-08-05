@@ -26,47 +26,85 @@ master_bot {
 }
 
 # icra2019 map
+
+#################
 point {
-  x: 6.14
-  y: 4.45
+  x: 5.92
+  y: 3.27
   z: 0
 
   roll:  0
   pitch: 0
-  yaw:   0
+  yaw:   0.360
 }
 
 point {
-  x: 6.73
-  y: 0.82
+  x: 6.70
+  y: 3.81
   z: 0
 
   roll:  0
   pitch: 0
-  yaw:   3.14
+  yaw:   0.330
 }
 
 
 point {
-  x: 2.49
-  y: 4.64
+  x: 7.86
+  y: 4.31
   z: 0
 
   roll:  0
   pitch: 0
-  yaw:   3.14
+  yaw:   0.317
 }
 
 point {
-  x: 1.26
-  y: 1.02
+  x: 8.79
+  y: 4.74
   z: 0
 
   roll:  0
   pitch: 0
-  yaw:   0
+  yaw:   0.241
 }
+point {
+  x: 10.17
+  y: 5.08
+  z: 0
 
+  roll:  0
+  pitch: 0
+  yaw:   0.120
+}
+point {
+  x: 11.39
+  y: 4.15
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw:   -1.015
+}
+point {
+  x: 11.98
+  y: 2.96
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw:   -1.659
+}
+point {
+  x: 10.81
+  y: 2.19
+  z: 0
+
+  roll:  0
+  pitch: 0
+  yaw:   -2.88
+}
+############################
 escape {
   left_x_limit: 2.5
   right_x_limit: 5.5

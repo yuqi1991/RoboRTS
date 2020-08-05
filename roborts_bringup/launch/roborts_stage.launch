@@ -1,5 +1,5 @@
 <launch>
-  <arg name="map" value="icra2019"/>
+  <arg name="map" value="my_map"/>
   <master auto="start"/>
   <param name="/use_sim_time" value="true"/>
 
