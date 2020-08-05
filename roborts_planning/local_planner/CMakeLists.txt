@@ -78,3 +78,13 @@ target_link_libraries(vel_converter
   )
 add_dependencies(vel_converter
   roborts_msgs_generate_messages)
+
+install(TARGETS ${PROJECT_NAME}_node vel_converter teb_test
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
+
+ install(DIRECTORY config
+            DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${PROJECT_NAME}
+    )

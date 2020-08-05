@@ -33,3 +33,9 @@ target_include_directories(roborts_tracking_test
 add_dependencies(roborts_tracking_test
   roborts_msgs_generate_messages)
 
+install(TARGETS kcf_tracker roborts_tracking_test
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
+

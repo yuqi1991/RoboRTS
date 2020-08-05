@@ -16,6 +16,53 @@ The autonomous mobile robot layer alone can let a robot, offically supported for
 
 **TODO:** Intelligent decision-making layer includes a multi-agent decision-making framework and a game simulator, it will be released soon in the future.
 
+## Installation
+
+Install ros dependencies:
+
+```
+sudo apt-get install -y ros-kinetic-opencv3             \
+                        ros-kinetic-cv-bridge           \
+                        ros-kinetic-image-transport     \
+                        ros-kinetic-stage-ros           \
+                        ros-kinetic-map-server          \
+                        ros-kinetic-laser-geometry      \
+                        ros-kinetic-interactive-markers \
+                        ros-kinetic-tf                  \
+                        ros-kinetic-pcl-*               \
+                        ros-kinetic-libg2o              \
+                        ros-kinetic-rplidar-ros         \
+                        ros-kinetic-rviz                \
+                        protobuf-compiler               \
+                        libprotobuf-dev                 \
+                        libsuitesparse-dev              \
+                        libgoogle-glog-dev              
+```
+
+Create serial port mapping rules:
+
+``
+sh roborts_bringup/scripts/udev/create_udev_rules.sh
+``
+
+Reload udev service
+
+```
+  sudo service udev reload
+  sudo service udev restart
+```
+
+Download and compile
+```
+mkdir -p roborts_ws/src
+cd roborts_ws/src
+git clone https://github.com/yuqi1991/RoboRTS.git
+cd ..
+catkin_make 
+source devel/setup.bash
+```
+
+
 ## Tutorial
 
 For more information about RoboMaster AI Robot platform and RoboRTS framework, please refer to [RoboRTS Tutorial](https://robomaster.github.io/RoboRTS-Tutorial/#/)

@@ -42,6 +42,7 @@ add_executable(behavior_test_node
   example_behavior/chase_behavior.h
   example_behavior/patrol_behavior.h
   example_behavior/search_behavior.h
+  example_behavior/test_behavior.h
   behavior_test.cpp
   executor/chassis_executor.cpp
   )
@@ -54,3 +55,13 @@ target_link_libraries(behavior_test_node
   )
 add_dependencies(behavior_test_node
   roborts_msgs_generate_messages)
+
+install(TARGETS behavior_test_node
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
+
+install(DIRECTORY config
+            DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
