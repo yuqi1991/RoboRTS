@@ -1,2 +1,5 @@
 *.pb.cc
 *.pb.h
+
+.idea/
+.git/

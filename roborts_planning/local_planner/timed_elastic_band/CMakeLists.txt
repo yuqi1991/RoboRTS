@@ -23,3 +23,13 @@ target_link_libraries(${PROJECT_NAME}
   ${EXTERNAL_LIBS}
   )
 add_library(planning::timed_elastic_band ALIAS timed_elastic_band)
+
+install(TARGETS ${PROJECT_NAME}
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
+
+install(DIRECTORY config
+            DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/local_planner/timed_elastic_band
+)

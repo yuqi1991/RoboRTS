@@ -7,7 +7,7 @@ trajectory_opt {
     teb_autosize: True
     dt_ref: 0.15
     dt_hysteresis: 0.01
-    global_plan_overwrite_orientation: true 
+    global_plan_overwrite_orientation: true
     allow_init_with_backwards_motion: false 
     global_plan_viapoint_sep: 1.5
     via_points_ordered: False
@@ -21,10 +21,10 @@ trajectory_opt {
 }
 
 kinematics_opt {
-    max_vel_x: 2.5
-    max_vel_x_backwards: 0.2
-    max_vel_y: 2.5
-    max_vel_theta: 2.5
+    max_vel_x: 1.0
+    max_vel_x_backwards: 0.5
+    max_vel_y: 1.0
+    max_vel_theta: 3.14
     acc_lim_x: 2.6
     acc_lim_y: 2.6
     acc_lim_theta: 2.6
