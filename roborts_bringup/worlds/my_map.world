@@ -19,7 +19,7 @@ define rplidar ranger
   sensor(
     range_max 20.0
     fov 360
-    samples 600
+    samples 300
   )
   # generic model properties
   color "black"
@@ -76,11 +76,11 @@ floorplan
 ( 
   name "RoboMaster Map"
   bitmap "../maps/my_map.pgm"
-  size [34.0 27.0 1.000]
-  pose [17.0 13.5  0 0 ]
+  size [16.0 7.3 1.000]
+  pose [8 3.65  0 0 ]
 )
 
 # throw in a robot
- rmcar(pose [ 6.9312 8.947 0 0.3137579 ] name "rmcar0" color "blue" )
+ rmcar(pose [ 6.0 1.0 0 0.3137579 ] name "rmcar0" color "blue" )
 # throw in a block for test
  # block(pose [ 23 13 0 0.3 ] color "red"  )

@@ -42,7 +42,7 @@ void roborts_localization::UWB_Publisher::Run() {
 
   roborts_msgs::UWB msg;
   msg.header.stamp = ros::Time::now();
-  
+
   msg.x = frame.GetX();
   msg.y = frame.GetY();
   msg.theta = frame.GetTheta();
