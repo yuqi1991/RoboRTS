@@ -1,0 +1,4 @@
+
+#vel_converter_node
+cmd_vel_pub: "/robot_1/cmd_vel"
+cmd_vel_acc_sub: "/robot_1/cmd_vel_acc"

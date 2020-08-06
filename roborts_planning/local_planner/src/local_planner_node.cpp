@@ -19,12 +19,16 @@
 
 #include "local_planner/local_planner_node.h"
 
+
 namespace roborts_local_planner {
 
 using roborts_common::NodeState;
 LocalPlannerNode::LocalPlannerNode() :
     local_planner_nh_("~"),
-    as_(local_planner_nh_, "/local_planner_node_action", boost::bind(&LocalPlannerNode::ExcuteCB, this, _1), false),
+    //这个地方怎么改？？
+    std::string local_planner_node_action,
+    local_planner_nh_.param<std::string>("local_planner_node_action", local_planner_node_action, "/local_planner_node_action"),
+    as_(local_planner_nh_, local_planner_node_action, boost::bind(&LocalPlannerNode::ExcuteCB, this, _1), false),
     initialized_(false), node_state_(roborts_common::NodeState::IDLE),
     node_error_info_(roborts_common::ErrorCode::OK), max_error_(5),
     local_cost_(nullptr), tf_(nullptr) {
@@ -69,7 +73,10 @@ roborts_common::ErrorInfo LocalPlannerNode::Init() {
   std::string name;
   visual_frame_ = local_cost_->GetGlobalFrameID();
   visual_ = LocalVisualizationPtr(new LocalVisualization(local_planner_nh_, visual_frame_));
-  vel_pub_ = local_planner_nh_.advertise<roborts_msgs::TwistAccel>("/cmd_vel_acc", 5);
+  
+  std::string cmd_vel_acc_pub;
+  local_planner_nh_.param<std::string>("cmd_vel_acc_pub", cmd_vel_acc_pub, "cmd_vel_acc");
+  vel_pub_ = local_planner_nh_.advertise<roborts_msgs::TwistAccel>(cmd_vel_acc_pub, 5);
 
   return roborts_common::ErrorInfo(roborts_common::ErrorCode::OK);
 }
