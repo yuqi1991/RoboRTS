@@ -61,7 +61,11 @@ cd ..
 catkin_make 
 source devel/setup.bash
 ```
-
+download and configure multimaster
+```
+sudo apt-get install ros-kinetic-multimaster-fkie
+```
+详细参考 roborts_bringup 中的文档
 
 ## Tutorial
 
