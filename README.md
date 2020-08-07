@@ -80,3 +80,8 @@ For more information, please refer to
 ## Copyright and License
 
 RoboRTS is provided under the [GPL-v3](COPYING).
+
+
+## Question
+1 、加入决策树后，odom.frame 会到处飘移，导致没法小车会不确定自己的位置;
+2 、目前只是做的仿真，还有tf和实车没有跑起来。 
