@@ -30,8 +30,13 @@ class ChassisExecutor{
   };
   /**
    * @brief Constructor of ChassisExecutor
+   * 
+   * 
    */
+  explicit ChassisExecutor(const std::string& robot_prefix);
+
   ChassisExecutor();
+
   ~ChassisExecutor() = default;
   /**
    * @brief Execute the goal-targeted task using global and local planner with actionlib

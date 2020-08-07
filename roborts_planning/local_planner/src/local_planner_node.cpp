@@ -18,32 +18,52 @@
 #include <csignal>
 
 #include "local_planner/local_planner_node.h"
+#include "local_planner/robot_prefix_handler.h"
 
+std::string robot_prefix;
+  
 
 namespace roborts_local_planner {
 
+
 using roborts_common::NodeState;
-LocalPlannerNode::LocalPlannerNode() :
-    local_planner_nh_("~"),
-    //这个地方怎么改？？
-    std::string local_planner_node_action,
-    local_planner_nh_.param<std::string>("local_planner_node_action", local_planner_node_action, "/local_planner_node_action"),
-    as_(local_planner_nh_, local_planner_node_action, boost::bind(&LocalPlannerNode::ExcuteCB, this, _1), false),
-    initialized_(false), node_state_(roborts_common::NodeState::IDLE),
-    node_error_info_(roborts_common::ErrorCode::OK), max_error_(5),
-    local_cost_(nullptr), tf_(nullptr) {
+// LocalPlannerNode::LocalPlannerNode() :
+//     local_planner_nh_("~"),
+//     //这个地方怎么改？？
+//     as_(local_planner_nh_, "/local_planner_node_action", boost::bind(&LocalPlannerNode::ExcuteCB, this, _1), false),
+//     initialized_(false), node_state_(roborts_common::NodeState::IDLE),
+//     node_error_info_(roborts_common::ErrorCode::OK), max_error_(5),
+//     local_cost_(nullptr), tf_(nullptr) {
+
+//   if (Init().IsOK()) {
+//     ROS_INFO("local planner initialize completed.");
+//   } else {
+//     ROS_WARN("local planner initialize failed.");
+//     SetNodeState(NodeState::FAILURE);
+//   }
+//   as_.start();
+// }
+
+
+LocalPlannerNode::LocalPlannerNode(const std::string &robot_prefix):
+   local_planner_nh_("~"),
+   as_(local_planner_nh_, robot_prefix+"/local_planner_node_action", boost::bind(&LocalPlannerNode::ExcuteCB, this, _1), false),
+   initialized_(false), node_state_(roborts_common::NodeState::IDLE),
+   node_error_info_(roborts_common::ErrorCode::OK), max_error_(5),
+   local_cost_(nullptr), tf_(nullptr)
+{
   if (Init().IsOK()) {
-    ROS_INFO("local planner initialize completed.");
+   ROS_INFO("local planner initialize completed.");
   } else {
-    ROS_WARN("local planner initialize failed.");
-    SetNodeState(NodeState::FAILURE);
+   ROS_WARN("local planner initialize failed.");
+   SetNodeState(NodeState::FAILURE);
   }
   as_.start();
 }
 
-LocalPlannerNode::~LocalPlannerNode() {
-  StopPlanning();
-}
+LocalPlannerNode::LocalPlannerNode() :
+   LocalPlannerNode("/local_planner_node_action"){return;}
+
 
 roborts_common::ErrorInfo LocalPlannerNode::Init() {
   ROS_INFO("local planner start");
@@ -74,9 +94,7 @@ roborts_common::ErrorInfo LocalPlannerNode::Init() {
   visual_frame_ = local_cost_->GetGlobalFrameID();
   visual_ = LocalVisualizationPtr(new LocalVisualization(local_planner_nh_, visual_frame_));
   
-  std::string cmd_vel_acc_pub;
-  local_planner_nh_.param<std::string>("cmd_vel_acc_pub", cmd_vel_acc_pub, "cmd_vel_acc");
-  vel_pub_ = local_planner_nh_.advertise<roborts_msgs::TwistAccel>(cmd_vel_acc_pub, 5);
+  vel_pub_ = local_planner_nh_.advertise<roborts_msgs::TwistAccel>(robot_prefix+"/cmd_vel_acc", 5);
 
   return roborts_common::ErrorInfo(roborts_common::ErrorCode::OK);
 }
@@ -258,19 +276,26 @@ void SignalHandler(int signal){
     ros::shutdown();
   }
 }
-
+//RobotPrefixHandler RobotPrefixHandler::RobotPrefixHandler_;
 int main(int argc, char **argv) {
 
   signal(SIGINT, SignalHandler);
   signal(SIGTERM,SignalHandler);
   ros::init(argc, argv, "local_planner_node", ros::init_options::NoSigintHandler);
+  
+  // auto p1 = RobotPrefixHandler :: getInstance();
+  // robot_prefix = p1->getName();
 
-  roborts_local_planner::LocalPlannerNode local_planner;
+  ros::NodeHandle nh("~");
 
+  nh.param<std::string>("robot_prefix", robot_prefix,"");
+  ROS_ERROR("read param %s", robot_prefix);
+  auto local_planner_ptr = std::make_unique<roborts_local_planner::LocalPlannerNode>(robot_prefix);
   ros::AsyncSpinner async_spinner(2);
+
   async_spinner.start();
   ros::waitForShutdown();
-  local_planner.StopPlanning();
+  local_planner_ptr->StopPlanning();
 
   return 0;
 }

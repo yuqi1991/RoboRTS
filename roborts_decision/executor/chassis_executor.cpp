@@ -16,6 +16,19 @@ ChassisExecutor::ChassisExecutor():execution_mode_(ExcutionMode::IDLE_MODE), exe
   ROS_INFO("Local planer server start!");
 }
 
+ChassisExecutor::ChassisExecutor(const std::string &robot_prefix):execution_mode_(ExcutionMode::IDLE_MODE), execution_state_(BehaviorState::IDLE),
+                                   global_planner_client_("global_planner_node_action", true),
+                                   local_planner_client_("local_planner_node_action", true)
+{
+  ros::NodeHandle nh;
+  cmd_vel_acc_pub_ = nh.advertise<roborts_msgs::TwistAccel>("cmd_vel_acc", 100);
+  cmd_vel_pub_     = nh.advertise<geometry_msgs::Twist>("cmd_vel", 1);
+  global_planner_client_.waitForServer(ros::Duration(5, 0));
+  ROS_INFO("Global planer server start!");
+  local_planner_client_.waitForServer(ros::Duration(5, 0));
+  ROS_INFO("Local planer server start!");
+}
+
 void ChassisExecutor::Execute(const geometry_msgs::PoseStamped &goal){
   execution_mode_ = ExcutionMode::GOAL_MODE;
   global_planner_goal_.goal = goal;

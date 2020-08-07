@@ -13,11 +13,16 @@
 void Command();
 char command = '0';
 
+std::string robot_prefix;
+
 int main(int argc, char **argv) {
   ros::init(argc, argv, "behavior_test_node");
   std::string full_path = ros::package::getPath("roborts_decision") + "/config/decision.prototxt";
 
-  auto chassis_executor = new roborts_decision::ChassisExecutor;
+  ros::NodeHandle nh("~");
+  nh.param<std::string>("robot_prefix", robot_prefix, "");
+
+  auto chassis_executor = new roborts_decision::ChassisExecutor(robot_prefix);
   auto blackboard = new roborts_decision::Blackboard(full_path);
 
   roborts_decision::BackBootAreaBehavior back_boot_area_behavior(chassis_executor, blackboard, full_path);

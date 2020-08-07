@@ -54,8 +54,11 @@ class LocalPlannerNode {
   /**
    * @brief Constructor
    */
+  explicit LocalPlannerNode(const std::string&  robot_prefix);
+
   LocalPlannerNode();
-  ~LocalPlannerNode();
+  
+  ~LocalPlannerNode() = default;
 
   /**
    * @brief init all param
@@ -118,6 +121,7 @@ class LocalPlannerNode {
 
    //! ros node handle
   ros::NodeHandle local_planner_nh_;
+
   //! local planner algorithm thread
   std::thread local_planner_thread_;
   //! local planner node actionlib server

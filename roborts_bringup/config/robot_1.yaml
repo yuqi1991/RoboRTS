@@ -1,4 +1,8 @@
 
 #vel_converter_node
+robot_name: robot_1
+
 cmd_vel_pub: "/robot_1/cmd_vel"
 cmd_vel_acc_sub: "/robot_1/cmd_vel_acc"
+
+local_planner_node_action: "/robot_1/local_planner_node_action"
